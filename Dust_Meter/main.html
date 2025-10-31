@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -14,7 +15,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +38,7 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navmenu" data-bs-offset="100" tabindex="0">
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -62,16 +66,60 @@
     <!-- หน้าหลัก -->
     <section id="home" class="home section">
         <div class="meter">
-            <h2>00.00</h2>
-            <button id="start">Start</button>
+            <h2>Air Quality Monitoring</h2>
+
+            <div class="pm-grid">
+                <div class="pm-card">
+                    <div class="pm-label">PM 1.0</div>
+                    <div class="pm-value" id="pm1">--</div>
+                    <div class="pm-unit">µg/m³</div>
+                </div>
+
+                <div class="pm-card">
+                    <div class="pm-label">PM 2.5</div>
+                    <div class="pm-value" id="pm25">--</div>
+                    <div class="pm-unit">µg/m³</div>
+                </div>
+
+                <div class="pm-card">
+                    <div class="pm-label">PM 10</div>
+                    <div class="pm-value" id="pm10">--</div>
+                    <div class="pm-unit">µg/m³</div>
+                </div>
+            </div>
+
+            <!-- เพิ่มส่วนแสดงอุณหภูมิและความชื้น -->
+            <div class="temp-humid-display">
+                <span>Temperature: <strong id="temp">--</strong>°C</span>
+                <span class="divider">|</span>
+                <span>Humidity: <strong id="humid">--</strong>%</span>
+            </div>
+
+            <div class="status disconnected" id="status">
+                <i class="bi bi-x-circle"></i> Not Connected
+            </div>
+
+            <button id="connectBtn">Connect to MQTT</button>
         </div>
     </section>
 
     <!-- abstract -->
     <section id="abstract" class="abstract section">
-            <h2 class="h2abstract">Abstract</h2>
-            <p>อุปกรณ์ตรวจสอบค่าปริมาณฝุ่น เพื่อที่จะสามารถหลีกเลี่ยงการเจอกับฝุ่นที่เป็นอันตรายกับร่างกายในพื้นที่ที่ต้องการ โดยสามารถนำอุปกรณ์ไปตั้งในพื้นที่ที่ต้องการและติดตามผลจากที่อื่นได้</p>
-    <!-- End Section Title -->
+        <h2 class="h2abstract">Abstract</h2>
+        <p>อุปกรณ์ติดตามคุณภาพอากาศ”
+            จัดทำขึ้นโดยมีวัตถุประสงค์เพื่อพัฒนาเครื่องติดตามคุณภาพอากาศที่สามารถตรวจวัดค่าฝุ่นละอองในอากาศ ได้แก่ PM10,
+            PM2.5 และ PM0.1 ในหน่วยไมโครกรัมต่อลูกบาศก์เมตร รวมถึงอุณหภูมิ (°C) และความชื้นสัมพัทธ์ (%) ได้แบบเรียลไทม์
+            โดยใช้อุปกรณ์เซนเซอร์ DHT22 สำหรับวัดอุณหภูมิและความชื้น และเซนเซอร์ PMS3003 สำหรับตรวจวัดค่าฝุ่นละออง
+            ข้อมูลจากเซนเซอร์จะถูกประมวลผลโดยไมโครคอนโทรลเลอร์ Arduino UNO R4 WiFi
+            ก่อนส่งต่อไปยังระบบแสดงผลหรือเว็บไซต์เพื่อให้ผู้ใช้สามารถติดตามข้อมูลได้จากระยะไกล
+            ระบบดังกล่าวช่วยให้ผู้ใช้งานสามารถเฝ้าระวังคุณภาพอากาศในพื้นที่ได้อย่างสะดวก แม่นยำ
+            และไม่จำเป็นต้องเข้าไปในพื้นที่ด้วยตนเอง</p>
+
+        <iframe width="450" height="265" src="https://www.youtube.com/embed/rrSi7Zvs94A?si=zvJOh1qpzEL3xrmC"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- End Section Title -->
     </section>
 
     <!-- component -->
@@ -96,5 +144,120 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- MQTT Library -->
+    <script src="https://unpkg.com/mqtt@5.3.4/dist/mqtt.min.js"></script>
+
+    <script>
+        // ============ ตั้งค่า MQTT ============
+        const MQTT_BROKER = 'ws://broker.hivemq.com:8000/mqtt';
+        const MQTT_TOPIC_PM = 'test/pm';
+        const MQTT_TOPIC_TEMP = 'test/temp'; // เพิ่ม topic ใหม่
+
+        let client = null;
+        let isConnected = false;
+
+        const connectBtn = document.getElementById('connectBtn');
+        const statusDiv = document.getElementById('status');
+        const pm1Div = document.getElementById('pm1');
+        const pm25Div = document.getElementById('pm25');
+        const pm10Div = document.getElementById('pm10');
+        const tempDiv = document.getElementById('temp'); // เพิ่ม
+        const humidDiv = document.getElementById('humid'); // เพิ่ม
+
+        // ฟังก์ชันเชื่อมต่อ MQTT
+        function connectMQTT() {
+            statusDiv.className = 'status connecting';
+            statusDiv.innerHTML = '<i class="bi bi-arrow-repeat"></i> Connecting...';
+            connectBtn.disabled = true;
+
+            client = mqtt.connect(MQTT_BROKER, {
+                clean: true,
+                connectTimeout: 4000,
+                clientId: 'dust_meter_' + Math.random().toString(16).substr(2, 8)
+            });
+
+            client.on('connect', function () {
+                console.log('Connected to MQTT broker');
+                isConnected = true;
+
+                statusDiv.className = 'status connected';
+                statusDiv.innerHTML = '<i class="bi bi-check-circle"></i> Connected';
+                connectBtn.textContent = 'Disconnect';
+                connectBtn.disabled = false;
+
+                // Subscribe ทั้ง 2 topics
+                client.subscribe(MQTT_TOPIC_PM, function (err) {
+                    if (!err) console.log('Subscribed to: ' + MQTT_TOPIC_PM);
+                });
+
+                client.subscribe(MQTT_TOPIC_TEMP, function (err) {
+                    if (!err) console.log('Subscribed to: ' + MQTT_TOPIC_TEMP);
+                });
+            });
+
+            client.on('message', function (topic, message) {
+                console.log('Received from ' + topic + ':', message.toString());
+
+                try {
+                    const data = JSON.parse(message.toString());
+
+                    // ถ้าเป็นข้อมูล PM
+                    if (topic === MQTT_TOPIC_PM) {
+                        pm1Div.textContent = data.pm1_0 || '--';
+                        pm25Div.textContent = data.pm2_5 || '--';
+                        pm10Div.textContent = data.pm10 || '--';
+                    }
+
+                    // ถ้าเป็นข้อมูล Temperature & Humidity
+                    if (topic === MQTT_TOPIC_TEMP) {
+                        tempDiv.textContent = data.temperature || '--';
+                        humidDiv.textContent = data.humidity || '--';
+                    }
+
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                }
+            });
+
+            client.on('error', function (err) {
+                console.error('MQTT Error:', err);
+                statusDiv.className = 'status disconnected';
+                statusDiv.innerHTML = '<i class="bi bi-exclamation-circle"></i> Connection Error';
+                connectBtn.disabled = false;
+            });
+
+            client.on('close', function () {
+                console.log('Disconnected from MQTT broker');
+                isConnected = false;
+
+                statusDiv.className = 'status disconnected';
+                statusDiv.innerHTML = '<i class="bi bi-x-circle"></i> Disconnected';
+                connectBtn.textContent = 'Connect to MQTT';
+                connectBtn.disabled = false;
+
+                pm1Div.textContent = '--';
+                pm25Div.textContent = '--';
+                pm10Div.textContent = '--';
+                tempDiv.textContent = '--';
+                humidDiv.textContent = '--';
+            });
+        }
+
+        function disconnectMQTT() {
+            if (client) {
+                client.end();
+            }
+        }
+
+        connectBtn.addEventListener('click', function () {
+            if (isConnected) {
+                disconnectMQTT();
+            } else {
+                connectMQTT();
+            }
+        });
+    </script>
 </body>
+
 </html>
