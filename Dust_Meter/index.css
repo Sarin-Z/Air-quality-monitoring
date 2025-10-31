@@ -19,6 +19,25 @@ header {
     }
 }
 
+/* navbar */
+.navbar-nav .nav-link {
+    font-size: 18px;
+    font-family: tahoma;
+    font-weight: 550;
+    color: #333;
+}
+
+.navbar-nav .nav-link.active {
+    color: #0134cb;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    font-weight: 800;
+    font-family: tahoma;
+    color: #000;
+}
+
 /* Section Base */
 .section {
     height: 100vh;
