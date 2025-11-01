@@ -10,7 +10,6 @@
  *
  *	Object: Measure Sensor Data of AM2302-Sensor with Arduino IDE
  */
-
 #include <AM2302-Sensor.h>
 constexpr unsigned int SENSOR_PIN{7U};
 
@@ -138,7 +137,7 @@ void connectToMQTT()
 void sendToMQTT()
 {
 
-  // --------------------------------------PM sensor---------------------------------------
+  // --------------------------------------PMS3003 sensor---------------------------------------
   // แปลงเป็น JSON (หรือ string ปกติก็ได้)
   String payload = "{\"pm1_0\": " + String(pm1_0) + ", \"pm2_5\": " + String(pm2_5) + ", \"pm10\": " + String(pm10) + "}";
 
