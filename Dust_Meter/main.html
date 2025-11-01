@@ -120,23 +120,116 @@
     <section id="component" class="component section">
         <h2 class="h2compponent">Components</h2>
         <div class="components-grid">
-            <div class="component-item">
-                <img src="humidtemp.jpg" alt="Display" />
+            <div class="component-item" data-modal="modal1">
+                <img src="humidtemp.jpg" alt="้humid" />
                 <p>Temperature & Humidity Sensor - ตรวจวัดอุณหภูมิและความชื้น</p>
             </div>
 
-            <div class="component-item">
+            <div class="component-item" data-modal="modal2">
                 <img src="dustsensor.jpg" alt="Dust Sensor" />
                 <p>Dust Sensor - ตรวจวัดค่าฝุ่น</p>
             </div>
 
-            <div class="component-item full">
+            <div class="component-item full" data-modal="modal3">
                 <img src="arduinoR4.jpg" alt="Arduino R4 WiFi" />
                 <p>Arduino Board - ใช้เป็นสมองหลักในการควบคุมระบบ</p>
             </div>
-
         </div>
     </section>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="humidtemp.jpg" alt="Temperature & Humidity Sensor">
+                </div>
+
+                <div class="modal-text">
+                    <h3>DHT22</h3>
+                    <p>เซนเซอร์ DHT22 เป็นอุปกรณ์ตรวจวัด อุณหภูมิและความชื้นสัมพัทธ์ แบบดิจิทัล ทำงานโดยใช้ Thermistor 
+                        สำหรับวัดอุณหภูมิ และ Capacitive Humidity Sensor สำหรับวัดความชื้น 
+                        ตัวเซนเซอร์จะทำการแปลงค่าที่วัดได้เป็นสัญญาณดิจิทัล DHT22 มีความละเอียดในการวัดความชื้น 
+                        ±2–5% RH และอุณหภูมิ ±0.5°C ทำให้เหมาะสำหรับการใช้งานที่ต้องการความแม่นยำในระดับปานกลางถึงสูง
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="dustsensor.jpg" alt="Dust Sensor" />
+                </div>
+
+                <div class="modal-text">
+                    <h3>Dust Sensor</h3>
+                    <p>
+                    เซนเซอร์ PMS3003 เป็นอุปกรณ์ตรวจวัดค่าฝุ่นละอองในอากาศแบบ เลเซอร์ (Laser Scattering Sensor) 
+                    โดยใช้หลักการการกระเจิงของแสง (Light Scattering Principle) ภายในโมดูลจะมี แหล่งกำเนิดแสงเลเซอร์ 
+                    และ ตัวรับแสง (Photodiode) เมื่ออากาศที่มีฝุ่นละอองถูกดูดผ่านเข้าไปภายในเซนเซอร์โดยพัดลมขนาดเล็ก 
+                    ฝุ่นละอองจะสะท้อนแสงเลเซอร์ในมุมต่าง ๆ ความเข้มของแสงที่สะท้อนกลับจะถูกวัดและนำไปประมวลผลเพื่อคำนวณปริมาณฝุ่นในอากาศ 
+                    หน่วยเป็นไมโครกรัมต่อลูกบาศก์เมตร (µg/m³) โดยสามารถตรวจวัดค่าฝุ่นได้หลายขนาด เช่น PM1.0, PM2.5 และ PM10 
+                    ค่าเหล่านี้ถูกส่งออกในรูปแบบสัญญาณดิจิทัลไปยังไมโครคอนโทรลเลอร์เพื่อแสดงผลหรือประมวลผลต่อไป 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="arduinoR4.jpg" alt="Arduino R4 WiFi" />
+                </div>
+
+                <div class="modal-text">
+                    <h3>Arduino R4 WiFi</h3>
+                    <p>Arduino R4 Wi-Fi คือบอร์ดไมโครคอนโทรลเลอร์รุ่นพัฒนาของ Arduino Uno ที่มีความสามารถในการเชื่อมต่อไร้สาย 
+                        (Wi-Fi, Bluetooth) และมีประสิทธิภาพสูงขึ้นจากไมโครโปรเซสเซอร์แบบ 32 บิต Renesas RA4M1 
+                        บอร์ดนี้ยังมาพร้อมกับฟีเจอร์ใหม่ๆ ที่ช่วยให้การพัฒนาโปรเจกต์ทำได้ง่ายขึ้น เช่น จอ LED Matrix ขนาด 12x8, 
+                        ตัวเชื่อมต่อ Qwiic I2C, และฟังก์ชันสำหรับการตรวจสอบและควบคุมโปรเจกต์จากระยะไกลผ่าน Arduino IoT Cloud 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // เปิด modal
+        document.querySelectorAll('.component-item').forEach(item => {
+            item.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            document.getElementById(modalId).style.display = "block";
+            });
+        });
+
+        // ปิด modal
+        document.querySelectorAll('.close').forEach(btn => {
+            btn.addEventListener('click', function() {
+            this.closest('.modal').style.display = "none";
+            });
+        });
+
+        // ปิด modal เมื่อคลิกนอกกรอบ
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
