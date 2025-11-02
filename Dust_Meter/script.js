@@ -27,7 +27,7 @@ function getAirQualityStatus(pm25Value) {
         good: 'img/air-good.png',
         moderate: 'img/air-moderate.png',
         unhealthySensitive: 'img/air-bad.png',
-        unhealthy: 'img/air-unhealthy.png',
+        unhealthy: 'img/air-unheathy.png',
         veryUnhealthy: 'img/air-veryunhealthy.png',
         hazardous: 'img/air-dead.png'
     };
