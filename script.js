@@ -1,5 +1,5 @@
 // ============ ตั้งค่า MQTT ============
-const MQTT_BROKER = 'wss://broker.hivemq.com:8000/mqtt';
+const MQTT_BROKER = 'wss://broker.hivemq.com:8884/mqtt';
 const MQTT_TOPIC_PM = 'test/pm';
 const MQTT_TOPIC_TEMP = 'test/temp';
 
