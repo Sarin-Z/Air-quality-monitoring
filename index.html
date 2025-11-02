@@ -42,9 +42,9 @@
 
                     <div class="collapse navbar-collapse" id="navmenu">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="#abstract">Abstract</a></li>
                             <li class="nav-item"><a class="nav-link" href="#component">Component</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#development">Development</a></li>
                             <li class="nav-item"><a class="nav-link" href="#members">Member</a></li>
                             <li class="nav-item"><a class="nav-link"
                                     href="https://github.com/Sarin-Z/Air-quality-monitoring" target="_blank">GitHub</a>
@@ -221,6 +221,106 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Development Section -->
+    <section id="development" class="development section">
+        <h2 class="h2development">Development Process</h2>
+
+        <div class="timeline">
+            <!-- สิ่งที่ได้ทำ -->
+            <div class="timeline-item">
+                <div class="timeline-icon completed">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>สิ่งที่ได้ทำ</h3>
+                    <ul>
+                        <li>ต่อวงจรระหว่างเซนเซอร์ PMS3003 และ DHT22กับบอร์ด Arduino</li>
+                        <li>เขียนโค้ดอ่านค่าฝุ่นและส่งผ่าน MQTT ไปยัง HiveMQ</li>
+                        <li>สร้างเว็บแสดงผลค่าฝุ่นผ่าน JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- วิธีการทำงาน -->
+            <div class="timeline-item">
+                <div class="timeline-icon process">
+                    <i class="bi bi-gear-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>วิธีการทำงาน</h3>
+                    <div class="flow-diagram">
+                        <span class="flow-step">Arduino อ่านค่าจากเซนเซอร์</span>
+                        <i class="bi bi-arrow-right"></i>
+                        <span class="flow-step">ส่งผ่าน MQTT</span>
+                        <i class="bi bi-arrow-right"></i>
+                        <span class="flow-step">เว็บ Subscribe</span>
+                        <i class="bi bi-arrow-right"></i>
+                        <span class="flow-step">แสดงผล</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ปัญหาและอุปสรรค -->
+            <div class="timeline-item">
+                <div class="timeline-icon problem">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>ปัญหาและอุปสรรค</h3>
+                    <ul>
+                        <li>MQTT ไม่เชื่อมต่อกับเว็บเพราะใช้พอร์ตผิด ตอนแรกใช้
+                            <code>ws://broker.hivemq.com:8000/mqtt</code>
+                        </li>
+                        <li>หน้าเว็บไม่แสดงผลเนื่องจาก JSON.parse() ผิดรูป</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- การแก้ไขและสิ่งที่เรียนรู้ -->
+            <div class="timeline-item">
+                <div class="timeline-icon solution">
+                    <i class="bi bi-lightbulb-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>การแก้ไขและสิ่งที่เรียนรู้</h3>
+                    <ul>
+                        <li>เปลี่ยนไปใช้ <code>wss://broker.hivemq.com:8884/mqtt</code></li>
+                        <li>แก้ JSON ให้มีโครงสร้างถูกต้อง</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ผลลัพธ์ที่ได้ -->
+            <div class="timeline-item">
+                <div class="timeline-icon result">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>ผลลัพธ์ที่ได้</h3>
+                    <ul>
+                        <li>เว็บแสดงค่าฝุ่นแบบเรียลไทม์ได้</li>
+                        <li>ข้อมูลอัปเดตต่อเนื่องจากบอร์ด</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- สิ่งที่ยังไม่ได้ทำ -->
+            <div class="timeline-item">
+                <div class="timeline-icon future">
+                    <i class="bi bi-clock-fill"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>การต่อยอดโปรเจกต์</h3>
+                    <ul>
+                        <li>เพิ่มกราฟค่าฝุ่นย้อนหลัง</li>
+                        <li>เพิ่มระบบแจ้งเตือนเมื่อค่าเกินเกณฑ์</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="members" class="member-section">
         <h2 class="h2member">Members</h2>
